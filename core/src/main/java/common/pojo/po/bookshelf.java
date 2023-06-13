@@ -1,4 +1,4 @@
-package book.service.po;
+package common.pojo.po;
 
 import lombok.Data;
 
