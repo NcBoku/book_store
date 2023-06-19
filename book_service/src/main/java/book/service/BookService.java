@@ -1,12 +1,17 @@
 package book.service;
 
+import book.pojo.dto.BookDTO;
+import book.pojo.dto.BookSearchDTO;
+import book.pojo.po.Book;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.List;
 
-@SpringBootApplication
-public class BookService {
-    public static void main(String[] args) {
-        SpringApplication.run(BookService.class, args);
-    }
+public interface BookService{
+
+    // 以某种排序方式获取某页Book数据
+    List<Book> list(Page<Book> page, BookSearchDTO bookSearchDTO);
+
+
 }

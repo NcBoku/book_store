@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book.mapper.BookMapper">
+
+    <select id="list" resultType="book.pojo.po.Book" >
+        select * from book
+        <where>
+            <if test="dto != null">
+                <if test="dto.bookName != null and dto.bookName != ''">
+                    book.name LIKE '%${dto.bookName}%'
+                </if>
+                <if test="dto.categoryName != null and dto.categoryName != ''">
+                    and book.categoryName LIKE '%${dto.categoryName}%'
+                </if>
+                <if test="dto.authorName != null and dto.authorName != ''">
+                    and book.authorName LIKE '%${dto.authorName}%'
+                </if>
+                <if test="dto.createdTime != null">
+                    and book.createdTime &gt; #{dto.createdTime}
+                </if>
+                <if test="dto.endedTime != null">
+                    and book.endedTime &lt; #{dto.endedTime}
+                </if>
+                <if test="dto.sortedKey != null">
+                    order by book.`${dto.sortedKey}`
+                    <if test="dto.isASC">
+                        ASC
+                    </if>
+                    <if test="not dto.isASC">
+                        DESC
+                    </if>
+                </if>
+            </if>
+        </where>
+    </select>
+</mapper>

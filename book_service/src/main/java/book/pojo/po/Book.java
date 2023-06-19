@@ -1,10 +1,12 @@
-package common.pojo.po;
+package book.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
+import java.sql.Timestamp;
+
 @Data
-public class book {
+public class Book {
     @TableId
     private Integer id;
 
@@ -20,11 +22,11 @@ public class book {
 
     private Integer downloadCount;
 
-    private Integer status;
+    private String status;
 
-    private Integer createdTime;
+    private Timestamp createdTime;
 
-    private Integer updatedTime;
+    private Timestamp updatedTime;
 
     private Boolean isValid;
 
