@@ -1,7 +1,9 @@
 package book.mapper;
 
+import book.pojo.bo.BookBO;
 import book.pojo.dto.BookSearchDTO;
 import book.pojo.po.Book;
+import book.pojo.po.Paragraph;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +18,27 @@ public class BookMapperTest {
     @Autowired
     private BookMapper bookMapper;
 
+    @Autowired
+    private ChapterMapper chapterMapper;
+
+    @Autowired
+    private ParagraphMapper paragraphMapper;
+
     @Test
-    public void listTest(){
-        Page<Book> bookPage = new Page<>();
-        bookPage.setPages(1);
-        bookPage.setSize(10);
-        BookSearchDTO dto = new BookSearchDTO();
-        dto.setBookName("书籍");
-        dto.setSortedKey("name");
-        dto.setIsASC(true);
-        List<Book> list = bookMapper.list(bookPage, dto);
-        System.out.println(list.get(0));
+    public void listTest() {
+        Page<BookBO> page = new Page<>();
+        List<BookBO> list = bookMapper.list(page, null, null, null, null, null, null, null);
+        list.forEach(bookBO -> {
+            StringBuilder sb = new StringBuilder();
+            bookBO.getChapters().forEach(chapterBO -> {
+                sb.append(chapterBO.getName());
+                chapterBO.getParagraphs().forEach(paragraph -> {
+                    sb.append(paragraph.getContent());
+                });
+                sb.append("\n");
+            });
+            System.out.println(sb.toString()+"\n\n");
+        });
     }
+
 }

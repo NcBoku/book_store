@@ -1,23 +1,21 @@
 package book.pojo.bo;
 
-import book.pojo.po.Book;
-import core.pojo.user.po.User;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.sql.Timestamp;
 
 @Data
-public class BookshelfBO {
+public class CategoryBO {
 
+    @TableId
     private Integer id;
 
-    private User author;
+    private Integer parentCategoryId;
 
-    private Book book;
+    private String name;
 
     private Timestamp createdTime;
 
     private Timestamp updatedTime;
-
-    private Boolean isDeleted;
 }

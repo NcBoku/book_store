@@ -24,7 +24,7 @@ public class BookBO {
 
     private Integer downloadCount;
 
-    private Integer status;
+    private String status;
 
     private Timestamp createdTime;
 
@@ -32,7 +32,7 @@ public class BookBO {
 
     private Boolean isValid;
 
-    private BookshelfBO bookshelfBO;
+    private Boolean isDeleted;
 
     private List<ChapterBO> chapters;
 }

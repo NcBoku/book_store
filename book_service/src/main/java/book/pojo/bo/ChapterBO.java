@@ -1,15 +1,17 @@
 package book.pojo.bo;
 
 import book.pojo.po.Book;
+import book.pojo.po.Paragraph;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 public class ChapterBO {
-    private Integer chapterId;
+    private Integer id;
 
-    private Book book;
+    private Integer bookId;
 
     private Integer no;
 
@@ -24,4 +26,6 @@ public class ChapterBO {
     private Boolean isValid;
 
     private Boolean isDeleted;
+
+    private List<Paragraph> paragraphs;
 }

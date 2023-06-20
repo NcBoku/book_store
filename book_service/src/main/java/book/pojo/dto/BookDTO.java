@@ -1,6 +1,5 @@
 package book.pojo.dto;
 
-import book.pojo.bo.BookshelfBO;
 import book.pojo.bo.ChapterBO;
 import book.pojo.po.Category;
 import core.pojo.user.po.User;
@@ -25,15 +24,13 @@ public class BookDTO {
 
     private Integer downloadCount;
 
-    private Integer status;
+    private String status;
 
     private Timestamp createdTime;
 
     private Timestamp updatedTime;
 
     private Boolean isValid;
-
-    private BookshelfBO bookshelfBO;
 
     private List<ChapterBO> chapters;
 }

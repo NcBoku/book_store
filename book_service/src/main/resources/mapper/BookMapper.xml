@@ -2,36 +2,59 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="book.mapper.BookMapper">
+    <resultMap id="BookBOResultMap" type="book.pojo.bo.BookBO">
+        <id column="book_id" property="id" jdbcType="INTEGER"/>
+        <result property="author.id" column="author_id" jdbcType="INTEGER"></result>
+        <result property="name" column="name" jdbcType="VARCHAR"></result>
+        <result property="recommendTicket" column="recommend_ticket" jdbcType="VARCHAR"></result>
+        <result property="downloadCount" column="download_count" jdbcType="VARCHAR"></result>
+        <result property="status" column="status" jdbcType="VARCHAR"></result>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"></result>
+        <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"></result>
+        <result property="isValid" column="is_valid" jdbcType="BOOLEAN"></result>
+        <association property="category" column="category_id"
+                     javaType="book.pojo.po.Category"
+                     select="book.mapper.CategoryMapper.selectById">
+        </association>
+        <collection property="chapters" column="book_id"
+                    select="book.mapper.ChapterMapper.selectChaptersBOByBookId">
+        </collection>
+    </resultMap>
 
-    <select id="list" resultType="book.pojo.po.Book" >
-        select * from book
+    <select id="list" resultMap="BookBOResultMap">
+        select * from book b
         <where>
-            <if test="dto != null">
-                <if test="dto.bookName != null and dto.bookName != ''">
-                    book.name LIKE '%${dto.bookName}%'
+            <if test="bookName != null and bookName != ''">
+                b.name like '${bookName}%'
+            </if>
+            <if test="categoryName != null and categoryName != ''">
+                and b.category_id in(
+                select c.category_id from category c
+                where c.name like '${categoryName}%'
+                )
+            </if>
+            <if test="userIds != null and userIds.size() > 0">
+                and b.author_id in
+                <foreach collection="userIds" item="id" separator="," open="(" close=")">
+                    #{id}
+                </foreach>
+            </if>
+            <if test="createdTime != null">
+                and b.createdTime &gt; #{createdTime}
+            </if>
+            <if test="endedTime != null">
+                and b.endedTime &lt; #{endedTime}
+            </if>
+            <if test="sortedKey != null">
+                order by b.`${sortedKey}`
+                <if test="isASC">
+                    ASC
                 </if>
-                <if test="dto.categoryName != null and dto.categoryName != ''">
-                    and book.categoryName LIKE '%${dto.categoryName}%'
-                </if>
-                <if test="dto.authorName != null and dto.authorName != ''">
-                    and book.authorName LIKE '%${dto.authorName}%'
-                </if>
-                <if test="dto.createdTime != null">
-                    and book.createdTime &gt; #{dto.createdTime}
-                </if>
-                <if test="dto.endedTime != null">
-                    and book.endedTime &lt; #{dto.endedTime}
-                </if>
-                <if test="dto.sortedKey != null">
-                    order by book.`${dto.sortedKey}`
-                    <if test="dto.isASC">
-                        ASC
-                    </if>
-                    <if test="not dto.isASC">
-                        DESC
-                    </if>
+                <if test="not isASC">
+                    DESC
                 </if>
             </if>
+            and b.is_deleted = false
         </where>
     </select>
 </mapper>
