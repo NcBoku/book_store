@@ -1,6 +1,6 @@
 package core.pojo.common;
 
-import core.pojo.common.constants.ResponseStatus;
+import core.constants.ResponseStatus;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,14 +16,16 @@ public class Response implements Serializable {
 
     }
 
-    public static Response ok(ResponseStatus status) {
+    public static Response ok(Object data) {
         Response response = new Response();
-        response.status = status;
+        response.setStatus(ResponseStatus.OK);
+        response.setData(data);
         return response;
     }
 
-    public static Response ok(ResponseStatus status, Object data) {
-        Response response = ok(status);
+    public static Response error(ResponseStatus status, Object data) {
+        Response response = new Response();
+        response.setStatus(status);
         response.setData(data);
         return response;
     }

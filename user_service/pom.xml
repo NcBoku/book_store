@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>book_service</artifactId>
+    <artifactId>user_service</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -17,10 +17,10 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-security</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,12 +44,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <!-- feign -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
         <!-- 共用实体类 -->
         <dependency>
             <groupId>com.lby</groupId>
@@ -65,4 +59,5 @@
         </dependency>
 
     </dependencies>
+
 </project>

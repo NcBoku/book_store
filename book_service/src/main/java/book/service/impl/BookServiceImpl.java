@@ -4,8 +4,10 @@ import book.mapper.BookMapper;
 import book.pojo.bo.BookBO;
 import book.pojo.dto.BookDTO;
 import book.pojo.dto.BookSearchDTO;
+import book.pojo.vo.BookDetailVO;
 import book.service.BookService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import core.pojo.common.Response;
 import core.pojo.user.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,28 +27,33 @@ public class BookServiceImpl implements BookService {
     private BookMapper bookMapper;
 
     @Override
-    public List<BookDTO> list(BookSearchDTO bookSearchDTO) {
+    public Response list(BookSearchDTO bookSearchDTO) {
         Page<BookBO> page = new Page<>();
 
-        ArrayList<BookDTO> bookVOs = new ArrayList<>();
+        ArrayList<BookDTO> bookDTOs = new ArrayList<>();
 
         // 通过user服务获取具有相似名称的author
-        List<UserDTO> userDTOList = null;
-        List<Integer> userIds = userDTOList.stream()
-                .map(UserDTO::getUserId)
-                .collect(Collectors.toList());
+        List<UserDTO> userDTOList = new ArrayList<>();
+        Map<Integer, UserDTO> map = userDTOList.stream()
+                .collect(Collectors.toMap(UserDTO::getUserId, o -> o));
+
 
         List<BookBO> books = bookMapper.list(page, bookSearchDTO.getBookName(),
-                bookSearchDTO.getCategoryName(), userIds,
+                bookSearchDTO.getCategoryName(), map.keySet(),
                 bookSearchDTO.getCreatedTime(), bookSearchDTO.getEndedTime(),
                 bookSearchDTO.getSortedKey(), bookSearchDTO.getIsASC());
 
         books.forEach(book -> {
             BookDTO bookDTO = new BookDTO();
             BeanUtils.copyProperties(book, bookDTO);
+            UserDTO userDTO = map.get(bookDTO.getAuthor().getId());
+            if (userDTO != null) {
+                BeanUtils.copyProperties(userDTO, bookDTO.getAuthor());
+            }
 
+            bookDTOs.add(bookDTO);
         });
 
-        return bookVOs;
+        return Response.ok(bookDTOs.stream().map(BookDetailVO::toBookDetailVO).collect(Collectors.toList()));
     }
 }

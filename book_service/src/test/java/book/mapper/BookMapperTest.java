@@ -30,13 +30,6 @@ public class BookMapperTest {
         List<BookBO> list = bookMapper.list(page, null, null, null, null, null, null, null);
         list.forEach(bookBO -> {
             StringBuilder sb = new StringBuilder();
-            bookBO.getChapters().forEach(chapterBO -> {
-                sb.append(chapterBO.getName());
-                chapterBO.getParagraphs().forEach(paragraph -> {
-                    sb.append(paragraph.getContent());
-                });
-                sb.append("\n");
-            });
             System.out.println(sb.toString()+"\n\n");
         });
     }

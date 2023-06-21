@@ -1,14 +1,14 @@
-package book;
+package user;
 
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"book", "core"})
+@SpringBootApplication(scanBasePackages = {"user", "core"})
 @MapperScan("book.mapper")
-public class BookService {
+public class UserService {
     public static void main(String[] args) {
-        SpringApplication.run(BookService.class, args);
+        SpringApplication.run(UserService.class, args);
     }
 }

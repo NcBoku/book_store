@@ -1,12 +1,10 @@
 package book.pojo.bo;
 
 import book.pojo.po.Category;
-import book.pojo.po.Chapter;
 import core.pojo.user.po.User;
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Data
 public class BookBO {
@@ -33,6 +31,4 @@ public class BookBO {
     private Boolean isValid;
 
     private Boolean isDeleted;
-
-    private List<ChapterBO> chapters;
 }

@@ -16,9 +16,6 @@
                      javaType="book.pojo.po.Category"
                      select="book.mapper.CategoryMapper.selectById">
         </association>
-        <collection property="chapters" column="book_id"
-                    select="book.mapper.ChapterMapper.selectChaptersBOByBookId">
-        </collection>
     </resultMap>
 
     <select id="list" resultMap="BookBOResultMap">

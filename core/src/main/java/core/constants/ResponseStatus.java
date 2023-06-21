@@ -1,4 +1,4 @@
-package core.pojo.common.constants;
+package core.constants;
 
 public enum ResponseStatus {
 

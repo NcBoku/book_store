@@ -31,6 +31,4 @@ public class BookDTO {
     private Timestamp updatedTime;
 
     private Boolean isValid;
-
-    private List<ChapterBO> chapters;
 }
