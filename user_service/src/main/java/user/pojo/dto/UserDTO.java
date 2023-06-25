@@ -8,4 +8,5 @@ public class UserDTO {
     private Integer userId;
 
     private String name;
+
 }
