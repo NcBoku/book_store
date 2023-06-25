@@ -42,6 +42,7 @@ public class UserServiceImpl implements UserService {
         List<UserDTO> userDTOs = users.getRecords().stream()
                 .map(user -> {
                     UserDTO userDTO = new UserDTO();
+                    userDTO.setId(user.getUserId());
                     BeanUtils.copyProperties(user, userDTO);
                     return userDTO;
                 })

@@ -18,8 +18,7 @@ spring:
   cloud:
     nacos:
       server-addr: http://localhost:80
-      discovery:
-        ephemeral: false
+
 
 # mybatis-plus配置
 mybatis-plus:

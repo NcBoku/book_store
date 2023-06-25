@@ -47,7 +47,7 @@ public class BookServiceImpl implements BookService {
         Response<List<UserDTO>> users = userClient.search(searchDTO);
 
         Map<Integer, UserDTO> map = users.getData().stream()
-                .collect(Collectors.toMap(UserDTO::getUserId, o -> o));
+                .collect(Collectors.toMap(UserDTO::getId, o -> o));
 
 
         List<BookBO> books = bookMapper.list(page, bookSearchDTO.getBookName(),
@@ -58,7 +58,7 @@ public class BookServiceImpl implements BookService {
         books.forEach(book -> {
             BookDTO bookDTO = new BookDTO();
             BeanUtils.copyProperties(book, bookDTO);
-            UserDTO userDTO = map.get(bookDTO.getAuthor().getId());
+            UserDTO userDTO = map.get(bookDTO.getAuthor().getUserId());
             if (userDTO != null) {
                 BeanUtils.copyProperties(userDTO, bookDTO.getAuthor());
             }

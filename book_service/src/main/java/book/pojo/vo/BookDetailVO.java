@@ -42,7 +42,7 @@ public class BookDetailVO {
         vo.setCategory(dto.getCategory().getName());
         vo.setCategoryId(dto.getCategory().getCategoryId());
         vo.setAuthor(dto.getAuthor().getName());
-        vo.setAuthorId(dto.getAuthor().getId());
+        vo.setAuthorId(dto.getAuthor().getUserId());
         vo.setStatus(dto.getStatus());
         vo.setIntroduce(dto.getIntroduce());
         vo.setRecommendTicket(dto.getRecommendTicket());

@@ -7,7 +7,7 @@ import lombok.Data;
 public class User {
 
     @TableId
-    private Integer id;
+    private Integer userId;
 
     private String name;
 }
