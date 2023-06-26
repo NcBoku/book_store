@@ -17,6 +17,14 @@ spring:
     password: indexwan123
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  redis:
+    host: localhost
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+
   cloud:
     nacos:
       server-addr: localhost:80
@@ -31,7 +39,6 @@ mybatis-plus:
       logic-delete-field: is_deleted #默认deleted
       logic-delete-value: 1
       logic-not-delete-value: 0
-
 
 logging:
   level:
