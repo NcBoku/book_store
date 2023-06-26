@@ -1,6 +1,7 @@
 package book.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -24,5 +25,6 @@ public class Chapter {
 
     private Boolean isValid;
 
+    @TableLogic
     private Boolean isDeleted;
 }

@@ -1,4 +1,4 @@
-package core.client;
+package core.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Configuration
-public class RestTemplate {
+public class RestTemplateConfig {
 
     @Bean
     @LoadBalanced

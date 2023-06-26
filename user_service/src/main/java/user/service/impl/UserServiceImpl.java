@@ -14,6 +14,7 @@ import user.pojo.dto.UserSearchDTO;
 import user.pojo.po.User;
 import user.service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,14 +40,16 @@ public class UserServiceImpl implements UserService {
                 .likeRight(StringUtils.hasText(dto.getName()), User::getName, dto.getName())
         );
 
-        List<UserDTO> userDTOs = users.getRecords().stream()
-                .map(user -> {
-                    UserDTO userDTO = new UserDTO();
-                    userDTO.setId(user.getUserId());
-                    BeanUtils.copyProperties(user, userDTO);
-                    return userDTO;
-                })
-                .collect(Collectors.toList());
+        List<UserDTO> userDTOs = users.getTotal() != 0 ?
+                users.getRecords().stream()
+                        .map(user -> {
+                            UserDTO userDTO = new UserDTO();
+                            userDTO.setId(user.getUserId());
+                            BeanUtils.copyProperties(user, userDTO);
+                            return userDTO;
+                        })
+                        .collect(Collectors.toList()) :
+                new ArrayList<>();
 
         return Response.<List<UserDTO>>ok(userDTOs);
     }

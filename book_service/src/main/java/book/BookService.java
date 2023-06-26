@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication(scanBasePackages = {"book", "core"})
 @MapperScan("book.mapper")
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"core.client"})
 @EnableDiscoveryClient
 public class BookService {
     public static void main(String[] args) {

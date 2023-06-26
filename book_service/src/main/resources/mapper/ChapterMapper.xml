@@ -21,7 +21,6 @@
         select *
         from chapter c
         where c.id = #{id}
-          and c.is_deleted = false
         order by c.no
     </select>
 
@@ -29,7 +28,6 @@
         select *
         from chapter c
         where c.book_id = #{id}
-          and c.is_deleted = false
         order by c.no
     </select>
 </mapper>

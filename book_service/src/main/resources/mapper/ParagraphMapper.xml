@@ -7,7 +7,6 @@
         select *
         from paragraph p
         where p.chapter_id = #{id}
-          and p.is_deleted = false
         order by p.no
     </select>
 </mapper>

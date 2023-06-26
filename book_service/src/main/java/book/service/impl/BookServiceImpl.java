@@ -35,14 +35,16 @@ public class BookServiceImpl implements BookService {
     @Override
     public Response<List<BookDetailVO>> list(BookSearchDTO bookSearchDTO) {
         Page<BookBO> page = new Page<>();
+        page.setPages(bookSearchDTO.getPage());
+        page.setSize(bookSearchDTO.getSize());
 
         ArrayList<BookDTO> bookDTOs = new ArrayList<>();
 
         // 通过user服务获取具有相似名称的author
         UserSearchDTO searchDTO = new UserSearchDTO();
-        searchDTO.setPage(1);
-        searchDTO.setSize(2);
-        searchDTO.setName("作者");
+        searchDTO.setPage(bookSearchDTO.getPage());
+        searchDTO.setSize(bookSearchDTO.getSize());
+        searchDTO.setName(bookSearchDTO.getBookName());
 
         Response<List<UserDTO>> users = userClient.search(searchDTO);
 

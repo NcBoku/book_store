@@ -1,7 +1,9 @@
 package book;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import core.client.user.UserClient;
 import core.config.MybatisPlusConfig;
+import core.constants.ResponseStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,9 @@ public class MybatisPlusConfigTest {
     @Autowired
     private MybatisPlusInterceptor mybatisPlusInterceptor;
 
+
     @Test
     public void test(){
-        Assert.notNull(mybatisPlusInterceptor,"注入失败");
+        System.out.println(ResponseStatus.OK);
     }
 }

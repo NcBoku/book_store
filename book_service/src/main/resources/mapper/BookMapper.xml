@@ -19,6 +19,7 @@
     </resultMap>
 
     <select id="list" resultMap="BookBOResultMap">
+            select * from book b
         <where>
             <if test="bookName != null and bookName != ''">
                 b.name like '${bookName}%'
@@ -50,7 +51,6 @@
                     DESC
                 </if>
             </if>
-            and b.is_deleted = false
         </where>
     </select>
 </mapper>

@@ -8,9 +8,9 @@ public enum ResponseStatus {
     NOT_FOUND(404, "访问不存在的资源"),
     INTERNAL_ERROR(500, "系统内部错误");
 
-    private Integer code;
+    public Integer code;
 
-    private String msg;
+    public String msg;
 
     ResponseStatus(Integer code, String msg) {
         this.code = code;
