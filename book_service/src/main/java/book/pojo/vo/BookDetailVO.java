@@ -2,7 +2,6 @@ package book.pojo.vo;
 
 import book.pojo.dto.BookDTO;
 import lombok.Data;
-import org.springframework.beans.BeanUtils;
 
 import java.sql.Timestamp;
 

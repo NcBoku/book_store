@@ -1,6 +1,5 @@
 package book.service.impl;
 
-import book.client.UserClient;
 import book.mapper.BookMapper;
 import book.pojo.bo.BookBO;
 import book.pojo.dto.BookDTO;
@@ -8,6 +7,7 @@ import book.pojo.dto.BookSearchDTO;
 import book.pojo.vo.BookDetailVO;
 import book.service.BookService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import core.client.user.UserClient;
 import core.pojo.common.Response;
 import core.pojo.user.dto.UserDTO;
 import core.pojo.user.dto.UserSearchDTO;

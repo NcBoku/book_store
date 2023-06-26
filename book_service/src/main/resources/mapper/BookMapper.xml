@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="book.mapper.BookMapper">
     <resultMap id="BookBOResultMap" type="book.pojo.bo.BookBO">
-        <id property="id" column="book_id"  jdbcType="INTEGER"/>
+        <id property="id" column="book_id" jdbcType="INTEGER"/>
         <result property="author.userId" column="author_id" jdbcType="INTEGER"></result>
         <result property="name" column="name" jdbcType="VARCHAR"></result>
         <result property="recommendTicket" column="recommend_ticket" jdbcType="VARCHAR"></result>
@@ -19,15 +19,14 @@
     </resultMap>
 
     <select id="list" resultMap="BookBOResultMap">
-        select * from book b
         <where>
             <if test="bookName != null and bookName != ''">
                 b.name like '${bookName}%'
             </if>
             <if test="categoryName != null and categoryName != ''">
                 and b.category_id in(
-                    select c.category_id from category c
-                    where c.name like '${categoryName}%'
+                select c.category_id from category c
+                where c.name like '${categoryName}%'
                 )
             </if>
             <if test="userIds != null and userIds.size() > 0">

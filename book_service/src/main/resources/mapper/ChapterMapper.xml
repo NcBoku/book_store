@@ -18,14 +18,18 @@
     </resultMap>
 
     <select id="selectChapterById" resultType="book.pojo.po.Chapter">
-        select * from chapter c
-        where c.id = #{id} and c.is_deleted = false
+        select *
+        from chapter c
+        where c.id = #{id}
+          and c.is_deleted = false
         order by c.no
     </select>
 
     <select id="selectChaptersBOByBookId" resultMap="ChapterBOResultMap">
-        select * from chapter c
-        where c.book_id = #{id} and c.is_deleted = false
+        select *
+        from chapter c
+        where c.book_id = #{id}
+          and c.is_deleted = false
         order by c.no
     </select>
 </mapper>

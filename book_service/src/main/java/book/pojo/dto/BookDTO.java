@@ -1,12 +1,10 @@
 package book.pojo.dto;
 
-import book.pojo.bo.ChapterBO;
 import book.pojo.po.Category;
 import core.pojo.user.po.User;
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Data
 public class BookDTO {

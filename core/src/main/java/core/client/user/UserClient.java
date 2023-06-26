@@ -1,4 +1,4 @@
-package book.client;
+package core.client.user;
 
 import core.constants.ConstantsClient;
 import core.pojo.common.Response;

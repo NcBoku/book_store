@@ -4,8 +4,10 @@
 <mapper namespace="book.mapper.ParagraphMapper">
 
     <select id="selectParagraphsByChapterId" resultType="book.pojo.po.Paragraph">
-        select * from paragraph p
-        where p.chapter_id = #{id} and p.is_deleted = false
+        select *
+        from paragraph p
+        where p.chapter_id = #{id}
+          and p.is_deleted = false
         order by p.no
     </select>
 </mapper>

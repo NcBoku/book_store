@@ -1,6 +1,5 @@
 package book.pojo.bo;
 
-import book.pojo.po.Book;
 import book.pojo.po.Paragraph;
 import lombok.Data;
 

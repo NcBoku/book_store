@@ -1,13 +1,12 @@
 package user.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import core.pojo.common.Response;
 import user.pojo.dto.UserDTO;
 import user.pojo.dto.UserSearchDTO;
 
 import java.util.List;
 
-public interface UserService  {
+public interface UserService {
 
     Response selectByUserId(Integer id);
 
