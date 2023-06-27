@@ -2,7 +2,7 @@ package core.constants;
 
 public enum ResponseStatus {
 
-    OK(200, "正常响应"),
+    OK(200, "成功"),
     REDIRECT(302, "重定向"),
     REQUEST_ERROR(400, "请求参数错误"),
     NOT_FOUND(404, "访问不存在的资源"),

@@ -7,6 +7,7 @@
         <module>book_service</module>
         <module>core</module>
         <module>user_service</module>
+        <module>user_auth</module>
     </modules>
 
     <groupId>com.lby</groupId>
