@@ -13,7 +13,7 @@ public class ExceptionAdvice {
     @ExceptionHandler(ResourceNotExistException.class)
     public Response<String> handleResourceNotExistException(ResourceNotExistException e){
         log.error(e.getMessage());
-        return Response.<String>error(ResponseStatus.NOT_FOUND,e.getMessage());
+        return Response.<String>error(ResponseStatus.NOT_EXIST_ERROR,e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
