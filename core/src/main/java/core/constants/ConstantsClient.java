@@ -9,4 +9,8 @@ public interface ConstantsClient {
     String BOOK_CLIENT = "book-service";
 
     String BOOK = "/book";
+
+    String AUTH_CLIENT = "auth-service";
+
+    String AUTH = "/auth";
 }

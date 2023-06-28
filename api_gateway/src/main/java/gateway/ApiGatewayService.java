@@ -1,18 +1,17 @@
-package book;
-
+package gateway;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@MapperScan("book.mapper")
-@EnableFeignClients(basePackages = {"core.client"})
+@MapperScan("user.mapper")
 @EnableDiscoveryClient
-public class BookService {
+public class ApiGatewayService {
+
     public static void main(String[] args) {
-        SpringApplication.run(BookService.class, args);
+        SpringApplication.run(ApiGatewayService.class, args);
     }
+
 }

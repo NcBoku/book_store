@@ -8,6 +8,7 @@
         <module>core</module>
         <module>user_service</module>
         <module>user_auth</module>
+        <module>api_gateway</module>
     </modules>
 
     <groupId>com.lby</groupId>

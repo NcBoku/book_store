@@ -1,0 +1,39 @@
+server:
+  port: 8078
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    nacos:
+      server-addr: http://localhost:80
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user
+          predicates:
+            - Path=/user/**
+        - id: book-service
+          uri: lb://book
+          predicates:
+            - Path=/book/**
+        - id: auth-serivce
+          uri: lb://auth
+          predicates:
+            - Path=/auth/**
+
+  redis:
+    host: localhost
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+
+
+logging:
+  level:
+    hikari:
+      sql:
+        Statement: debug
